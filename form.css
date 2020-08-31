@@ -52,13 +52,12 @@ input[type=submit]:focus{background-color:#7f0824;}
 
 #footer{
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  color: #999;
-  bottom: 3%;
+  color: #000;
+  bottom: 1%;
   width: 100%;
-  text-align: center;
-  position: fixed;
+  align-items: center;
 }
 
 #footer_img {
