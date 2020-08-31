@@ -39,10 +39,9 @@ a:active {
 body {
     font-family: 'Roboto', sans-serif;
 	font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 150%;
     font-variant-numeric: oldstyle-nums;
-    margin: 2em 4em 4em 4em;
 }
 
 h1 {
@@ -79,4 +78,24 @@ b {
 	font-weight: 400;
     font-family: 'Roboto-Bold', sans-serif;
     font-variant-numeric: oldstyle-nums;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.keywords{
+    max-width: 720px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 60%;
 }
