@@ -1,2 +1,3 @@
-# English Keyword Extractor
-Keyword extractor for English documents.
+# Quohat Keyword Extractor
+
+Extract your English documents!
