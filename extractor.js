@@ -64,7 +64,7 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 function preprocess() {
-    var delimiters = ["(", ")", "[", "]", "{", "}", ".", ",", ":", ";", "!", "#", "$", "&", "?", "-", "_", "+", "<", ">"];
+    var delimiters = ["(", ")", "[", "]", "{", "}", ".", ",", ":", ";", "!", "#", "$", "&", "?", "-", "_", "+", "<", ">", '“', '”'];
     var str = document.getElementById("textbox").value.toLowerCase();
     str = " " + str + " ";
     n = delimiters.length;
