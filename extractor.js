@@ -39,15 +39,27 @@ function extract() {
     return ((a.score > b.score) ? -1 : ((a.score == b.score) ? 0 : 1));
     });
 
+    var temp = [];
+    for (var i = 0; i < Math.floor(x/8); i++) {
+        temp.push(combination[i].kw);
+    }
+
+    var combination = [];
+    for (var i = 0; i < Math.floor(x/10); i++) {
+        if (combination.includes(temp[i]) == false) {
+            combination.push(temp[i]);
+        }
+    }
+    x = combination.length;
     kw_list = '<b>KEYWORDS:</b><br><br>'
     kw_list += '<div class="row"><div class="column">'
-    for (var i = 0; i < Math.floor(x/10); i++) {
-        kw_list += "<p>"+combination[i].kw + "</p>";
+    for (var i = 0; i < Math.floor(x/2); i++) {
+        kw_list += "<p>"+combination[i] + "</p>";
     }
     kw_list += "</div>";
     kw_list += '<div class="column">'
-    for (var i = Math.floor(x/10); i < x/5; i++) {
-        kw_list += "<p>"+combination[i].kw + "</p>";
+    for (var i = Math.floor(x/2); i < x; i++) {
+        kw_list += "<p>"+combination[i] + "</p>";
     }
     kw_list += "</div>";
     kw_list+= "</div>";
@@ -64,25 +76,28 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 function preprocess() {
-    var delimiters = ["(", ")", "[", "]", "{", "}", ".", ",", ":", ";", "!", "#", "$", "&", "?", "-", "_", "+", "<", ">", '“', '”', '–'];
+    var delimiters = ["(", ")", "[", "]", "{", "}", ".", ",", ":", ";", "!", "#", "$", "&", "?", " - ", "_", "+", "<", ">", '“', '”', '–', "…", ' / ', "|", '’', "'"];
     var str = document.getElementById("textbox").value.toLowerCase();
     str = " " + str + " ";
-    n = delimiters.length;
-    str = str.replaceAll("\n","  wwttff  ");
-    for (var i = 0; i < n; i++) {
-        str = str.replaceAll(delimiters[i], "  wwttff  ");
-    }
+    str = splitMulti(str, delimiters).join(" wwttff ");
     return str;
 }
 
 function removeStopwords(str) {
     n = fox_stoplist.length;
+    str = str.replaceAll("n't", " not");
+    str = str.replaceAll("n’t", " not");
+    str = str.replaceAll("'ve", " have");
+    str = str.replaceAll('’ve', " have");
+    str = str.replaceAll('t’s', "t is");
+    str = str.replaceAll("t's", "t is");
+    str = str.replaceAll('\n', " wwttff ");
     for (var i = 0; i < n; i++) {
-        str = str.replaceAll(" "+fox_stoplist[i]+" ", "  wwttff  ");
+        str = str.replaceAll(" "+fox_stoplist[i]+" ", " wwttff ");
     }
     str = str.replace(/\s+/g, ' ');
-    str = str.replaceAll("wwttff", "+");
-    str = str.split("+");
+    //str = str.replaceAll("wwttff", "+");
+    str = str.split("wwttff");
 
     n = str.length;
     var candidates = [];
@@ -97,4 +112,13 @@ function removeStopwords(str) {
 
 function countInstances(string, word) {
    return string.split(word).length - 1;
+}
+
+function splitMulti(str, tokens){
+        var tempChar = tokens[0]; // We can use the first token as a temporary join character
+        for(var i = 1; i < tokens.length; i++){
+            str = str.split(tokens[i]).join(tempChar);
+        }
+        str = str.split(tempChar);
+        return str;
 }
