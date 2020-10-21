@@ -2,4 +2,4 @@
 
 Extract keyword in your English documents!
 
-https://quohat.github.io/quohat-keyword-extractor
+https://quohat.github.io/quohat-keywords-extractor
