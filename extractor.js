@@ -40,12 +40,12 @@ function extract() {
     });
 
     var temp = [];
-    for (var i = 0; i < Math.floor(x/5); i++) {
+    for (var i = 0; i < Math.floor(x/3); i++) {
         temp.push(combination[i].kw);
     }
 
     var combination = [];
-    for (var i = 0; i < Math.floor(x/7); i++) {
+    for (var i = 0; i < Math.floor(x/5); i++) {
         if (combination.includes(temp[i]) == false) {
             combination.push(temp[i]);
         }
